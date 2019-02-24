@@ -14,10 +14,11 @@ parser.add_argument("--save_dir", default="result/", help="dir of saving output 
 
 if __name__ == "__main__":
 
-    if not os.path.exits(os.path.join(os.getcwd(), args.save_dir)):
+    args = parser.parse_args()
+
+    if not os.path.exists(os.path.join(os.getcwd(), args.save_dir)):
         os.makedirs(os.path.join(os.getcwd(), args.save_dir))
 
-    args = parser.parse_args()
     json_path = os.path.join(args.model_path, "params.json")
     assert os.path.isfile(json_path), "No json file is found at {}".format(args.model_path)
     params = Params(json_path)

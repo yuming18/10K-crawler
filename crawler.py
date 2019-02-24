@@ -4,7 +4,6 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
-from tqdm import tqdm
 import json
 import logging
 
@@ -105,7 +104,7 @@ def crawl_all(params, cik_list, save_dir):
     logger = logging.getLogger()
     logging.info("----- Start crawling -----")
 
-    for cik in cik_list[-2:]:
+    for cik in cik_list:
         company_dict = crawl(params, cik)
         with open(save_dir + cik + ".json", "w") as out:
             json.dump(company_dict, out, sort_keys = True, indent = 4)
